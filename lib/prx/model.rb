@@ -1,0 +1,6 @@
+require "prx/model/base"
+require "prx/model/audio_file"
+require "prx/model/audio_version"
+require "prx/model/user"
+require "prx/model/account"
+require "prx/model/piece"
