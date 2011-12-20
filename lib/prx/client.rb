@@ -17,16 +17,11 @@ module PRX
       
       def piece_create(piece)
         client_options[:multipart] = true
-        access_token.post(create_url('pieces'), :body=>piece.as_json)
+        access_token.post(create_url('pieces'), :body=>piece.as_json, 'Content-Type' => 'application/json')
+        # access_token.post(create_url('pieces'), :body=>{:test=>{:nested=>piece.audio_versions[0].audio_files[0].file}})
+        # access_token.post(create_url('pieces'), :body=>{:test=>[piece.audio_versions[0].audio_files[0].file]})
       end
       
-      # # uploading a file:
-      # payload = { :profile_pic => Faraday::UploadIO.new('avatar.jpg', 'image/jpeg') }
-      # 
-      # # "Multipart" middleware detects files and encodes with "multipart/form-data":
-      # conn.put '/profile', payload        
-
-
       def client_options; @client_options ||= {}; end
       def access_token_options; @access_token_options ||= {}; end
 
@@ -39,13 +34,15 @@ module PRX
       def client
         options = client_options.clone
         options[:site] = site unless options.has_key?(:site)
-        OAuth2::Client.new(key, secret, {:site=>site})  do |builder|
-          builder.request  :multipart if options[:multipart]
-          # builder.request  :url_encoded
-          builder.request  :json
-          builder.response :logger
+        OAuth2::Client.new(key, secret, {:site=>site})  do |b|
+
+          b.request :multipart # if options[:multipart]
+          b.request :url_encoded
+          b.request :json
+
+          # b.response :logger
           
-          builder.adapter  :net_http
+          b.adapter  :net_http
         end
       end
 
