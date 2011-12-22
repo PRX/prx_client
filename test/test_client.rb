@@ -27,27 +27,33 @@ class PRX::TestClient < Test::Unit::TestCase
     }
 
     # FakeWeb.register_uri(:get, "http://development.prx.org:3001/me", :body=>user.to_json)
+    # 
+    # FakeWeb.register_uri(:post, "http://development.prx.org:3001/api/v2/pieces", :body=>{}.to_json)
 
   end
 
-  # 
   # def test_me
   #   response = PRX::Client.me
   #   puts response.parsed.inspect
   # end
 
-  # def test_piece_create_with_local_file
-  #   p = PRX::Model::Piece.new(:title=>'test title', :short_description=>'test short description', :description=>'test description', :account_id=>8)
-  #   p.add_audio(:label=>'test', :file=>'/Users/akuklewicz/test.mp2', :mime_type=>'audio/mpeg')
-  #   response = PRX::Client.piece_create(p)
-  #   puts response.parsed.inspect
-  # end
-
-  def test_piece_create_with_remote_url
-    p = PRX::Model::Piece.new(:title=>'test title', :short_description=>'test short description', :description=>'test description', :account_id=>8)
-    p.add_audio(:label=>'test', :file=>'s3://andrew-s3.prx.org/public/audio_files/118091/Baronowski.mp2', :size=>1)
+  def test_piece_create_with_local_file
+    p = PRX::Model::Piece.new(:title=>'test title',
+                              :short_description=>'test short description',
+                              :description=>'test description',
+                              :account=>PRX::Model::Account.new(:id=>8))
+                              
+    puts p.to_json.inspect
+    p.add_audio(:label=>'test', :file=>'/Users/akuklewicz/test.mp2', :content_type=>'audio/mpeg')
     response = PRX::Client.piece_create(p)
     puts response.parsed.inspect
   end
+
+  # def test_piece_create_with_remote_url
+  #   p = PRX::Model::Piece.new(:title=>'test title', :short_description=>'test short description', :description=>'test description', :account_id=>8)
+  #   p.add_audio(:label=>'test', :file=>'s3://andrew-s3.prx.org/public/audio_files/118091/Baronowski.mp2', :size=>1)
+  #   response = PRX::Client.piece_create(p)
+  #   puts response.parsed.inspect
+  # end
 
 end

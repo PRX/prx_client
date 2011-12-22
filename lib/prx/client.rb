@@ -17,7 +17,7 @@ module PRX
       
       def piece_create(piece)
         client_options[:multipart] = true
-        access_token.post(create_url('pieces'), :body=>piece.as_json, 'Content-Type' => 'application/json')
+        access_token.post(create_url('pieces'), :body=>{:piece=>piece.as_json}, 'Content-Type' => 'application/json')
         # access_token.post(create_url('pieces'), :body=>{:test=>{:nested=>piece.audio_versions[0].audio_files[0].file}})
         # access_token.post(create_url('pieces'), :body=>{:test=>[piece.audio_versions[0].audio_files[0].file]})
       end

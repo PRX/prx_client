@@ -21,6 +21,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency "json"
   s.add_runtime_dependency "activesupport"
   s.add_runtime_dependency "oauth2"
+  s.add_runtime_dependency "roar"
 
   # specify any dependencies here; for example:
   s.add_development_dependency "rake"
