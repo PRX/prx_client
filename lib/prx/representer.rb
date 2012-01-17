@@ -1,0 +1,8 @@
+require "prx/representer/account_representer"
+require "prx/representer/audio_file_representer"
+require "prx/representer/audio_version_representer"
+require "prx/representer/network_representer"
+require "prx/representer/series_representer"
+require "prx/representer/user_representer"
+require "prx/representer/producer_representer"
+require "prx/representer/piece_representer"

@@ -7,7 +7,7 @@ module PRX
     module NetworkRepresenter
       include Roar::Representer::JSON
       include Roar::Representer::Feature::Hypermedia
- 
+      
       property :id
       property :name
       property :path

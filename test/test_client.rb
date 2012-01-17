@@ -41,17 +41,18 @@ class PRX::TestClient < Test::Unit::TestCase
     p = PRX::Model::Piece.new(:title=>'test title',
                               :short_description=>'test short description',
                               :description=>'test description',
-                              :account=>PRX::Model::Account.new(:id=>8))
+                              :account=>PRX::Model::Account.new(:id=>8),
+                              :producers=>[PRX::Model::Producer.new(:name=>'Producer')])
                               
     puts p.to_json.inspect
-    p.add_audio(:label=>'test', :file=>'/Users/akuklewicz/test.mp2', :content_type=>'audio/mpeg')
+    p.add_audio(:label=>'test', :attach_file=>'/Users/akuklewicz/test.mp2', :content_type=>'audio/mpeg')
     response = PRX::Client.piece_create(p)
     puts response.parsed.inspect
   end
 
   # def test_piece_create_with_remote_url
   #   p = PRX::Model::Piece.new(:title=>'test title', :short_description=>'test short description', :description=>'test description', :account_id=>8)
-  #   p.add_audio(:label=>'test', :file=>'s3://andrew-s3.prx.org/public/audio_files/118091/Baronowski.mp2', :size=>1)
+  #   p.add_audio(:label=>'test', :attach_file=>'s3://andrew-s3.prx.org/public/audio_files/118091/Baronowski.mp2', :size=>1)
   #   response = PRX::Client.piece_create(p)
   #   puts response.parsed.inspect
   # end

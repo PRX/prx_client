@@ -1,5 +1,5 @@
-require 'prx/client/version'
 require 'prx/model'
+require 'prx/representer'
 
 module PRX
   module Client

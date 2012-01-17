@@ -7,15 +7,15 @@ module PRX
     module AudioFileRepresenter
       include Roar::Representer::JSON
       include Roar::Representer::Feature::Hypermedia
- 
+      
       property :id
       property :label
-      property :file
+      property :attach_file
       property :content_type
       property :size
       property :status
       property :length
-  
+      
     end
   end
 end
