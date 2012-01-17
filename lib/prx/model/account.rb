@@ -5,16 +5,13 @@ module PRX
     class Account < PRX::Model::Base
 
       include PRX::Representer::AccountRepresenter
-
-      # attr_accessor :name
-      # attr_accessor :type
-      # 
-      # # relationships
-      # attr_accessor :networks
-      # 
-      # def initialize(*args)
-      #   super
-      # end
+      
+      def member_type
+        'Account'
+      end
+      
+      def member_type=(mt)
+      end
 
     end
   end

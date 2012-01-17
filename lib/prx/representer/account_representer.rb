@@ -11,7 +11,7 @@ module PRX
       property :id
       property :name
       property :path
-      property :type_name, :from=>:type
+      property :member_type, :from=>:type
       
     end
   end
