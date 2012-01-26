@@ -9,6 +9,4 @@ require 'active_support/core_ext/module/aliasing'
 require 'active_support/json/encoding'
 require 'active_support/all'
 
-require "prx/client"
-require "prx/model"
-
+require 'prx/client/version'

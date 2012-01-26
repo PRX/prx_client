@@ -17,8 +17,8 @@ class PRX::TestAudioFile < Test::Unit::TestCase
   end
 
   def test_prepare_upload
-    af = PRX::Model::AudioFile.new(:file=>'/Users/akuklewicz/test.mp2')
-    assert af.file.is_a?(Faraday::UploadIO)
+    af = PRX::Model::AudioFile.new(:attach_file=>'/Users/akuklewicz/test.mp2')
+    assert af.attach_file.is_a?(Faraday::UploadIO)
   end
   
 end

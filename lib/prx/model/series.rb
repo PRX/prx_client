@@ -1,10 +1,10 @@
-require 'prx/representer/series_representer'
+require 'prx/representer/full/series_representer'
 
 module PRX
   module Model
     class Series < PRX::Model::Base
 
-      include PRX::Representer::SeriesRepresenter
+      include PRX::Representer::Full::SeriesRepresenter
 
     end
   end
