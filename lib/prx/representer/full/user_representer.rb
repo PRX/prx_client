@@ -1,7 +1,6 @@
 require 'roar/representer'
 require 'roar/representer/json'
 require 'roar/representer/feature/hypermedia'
-require "prx/representer/min/user_representer"
 
 module PRX
   module Representer
@@ -10,7 +9,12 @@ module PRX
         
         include Roar::Representer::JSON
         include Roar::Representer::Feature::Hypermedia
-        include PRX::Representer::Min::UserRepresenter
+
+        property :id
+        property :login
+        property :email
+        property :first_name
+        property :last_name
         
       end
     end
