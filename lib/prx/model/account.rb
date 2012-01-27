@@ -6,6 +6,8 @@ module PRX
 
       include PRX::Representer::Full::AccountRepresenter
 
+      attr_accessor :id, :name, :path, :type_name
+
     end
   end
 end

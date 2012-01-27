@@ -5,9 +5,12 @@ module PRX
     class AudioFile < PRX::Model::Base
 
       include PRX::Representer::Full::AudioFileRepresenter
+
+      attr_accessor :id, :label, :content_type, :size, :status, :length
+      attr_reader :attach_file
       
       def attach_file=(f)
-        super
+        @attach_file = f
         prepare_file_upload if f
         self.attach_file
       end

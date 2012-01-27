@@ -6,6 +6,8 @@ module PRX
 
       include PRX::Representer::Full::ProducerRepresenter
 
+      attr_accessor :id, :name, :email, :user
+
     end
   end
 end

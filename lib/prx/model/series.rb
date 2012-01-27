@@ -6,6 +6,8 @@ module PRX
 
       include PRX::Representer::Full::SeriesRepresenter
 
+      attr_accessor :id, :title
+
     end
   end
 end

@@ -6,6 +6,8 @@ module PRX
 
       include PRX::Representer::Full::AudioVersionRepresenter
 
+      attr_accessor :id,:label,:content_advisory,:timing_and_cues,:transcript,:news_hole_break,:floating_break,:bottom_of_hour_break,:twenty_forty_break,:audio_files
+
       def initialize(*args)
         super
         self.audio_files ||= []
