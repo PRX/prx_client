@@ -10,6 +10,7 @@ module PRX
       attr_accessor :episode_number, :length, :language, :related_website, :credits, :broadcast_history, :intro, :outro
       attr_accessor :allow_comments, :is_shareable, :point_level, :network_only
       attr_accessor :promos, :license, :audio_versions, :producers, :creator, :account, :series, :networks
+      attr_accessor :publish_on_valid
 
       def initialize(*args)
         super

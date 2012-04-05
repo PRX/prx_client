@@ -6,7 +6,7 @@ require 'net/http'
 class PRX::TestAccount < Test::Unit::TestCase
 
   def test_initialize
-    a = PRX::Model::Account.new(:name=>'n', :id=>1)
+    a = PRX::Model::Account.new(:name=>'n', :id=>1, :type_name=>'Group')
     assert a.is_a?(PRX::Model::Account)
     assert_equal a.name, 'n'
     assert_equal a.id, 1

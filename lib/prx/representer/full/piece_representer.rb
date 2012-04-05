@@ -38,6 +38,7 @@ module PRX
         property :is_shareable
         property :point_level
         property :network_only
+        property :publish_on_valid
         
         # child models we provide full
         property    :promos,
