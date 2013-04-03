@@ -17,8 +17,8 @@ module PRX
         property :size
         property :status
         property :length
-        property :url
-      
+        property :url, :if => lambda {|opts| opts[:link_audio]}      
+
       end
     end
   end
