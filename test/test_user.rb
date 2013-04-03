@@ -1,7 +1,7 @@
-load './helper.rb'
+require File.dirname(__FILE__) + '/helper'
+
 require 'prx/client'
 require 'prx/model'
-require 'net/http'
 
 class PRX::TestUser < Test::Unit::TestCase
 

@@ -1,13 +1,17 @@
+require 'roar/representer/json'
+require 'prx/model/base'
 require 'prx/representer/full/piece_representer'
 
 module PRX
   module Model
     class Piece < PRX::Model::Base
 
+      include Roar::Representer::JSON
       include PRX::Representer::Full::PieceRepresenter
 
-      attr_accessor :id, :title, :short_description, :description, :account_id, :published_at, :created_at, :produced_on
-      attr_accessor :episode_number, :length, :language, :related_website, :credits, :broadcast_history, :intro, :outro
+      attr_accessor :title, :short_description, :description, :account_id, :published_at, :created_at, :produced_on
+      attr_accessor :episode_number, :episode_identifier, :episode_date
+      attr_accessor :length, :language, :related_website, :credits, :broadcast_history, :intro, :outro
       attr_accessor :allow_comments, :is_shareable, :point_level, :network_only
       attr_accessor :promos, :license, :audio_versions, :producers, :creator, :account, :series, :networks
       attr_accessor :publish_on_valid

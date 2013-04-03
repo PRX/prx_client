@@ -1,4 +1,4 @@
-load './helper.rb'
+require File.dirname(__FILE__) + '/helper'
 require 'prx/client'
 require 'prx/model'
 require 'net/http'
@@ -17,7 +17,7 @@ class PRX::TestAudioFile < Test::Unit::TestCase
   end
 
   def test_prepare_upload
-    af = PRX::Model::AudioFile.new(:attach_file=>'/Users/akuklewicz/test.mp2')
+    af = PRX::Model::AudioFile.new(:attach_file=>"#{File.dirname(__FILE__)}/files/test.mp2")
     assert af.attach_file.is_a?(Faraday::UploadIO)
   end
   

@@ -7,8 +7,8 @@ module PRX
     module Full
       module UserRepresenter
         
-        include Roar::Representer::JSON
         include Roar::Representer::Feature::Hypermedia
+        include Roar::Representer::JSON
 
         property :id
         property :login

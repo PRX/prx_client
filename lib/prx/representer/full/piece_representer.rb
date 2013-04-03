@@ -15,8 +15,9 @@ module PRX
   module Representer
     module Full
       module PieceRepresenter
-        include Roar::Representer::JSON
+
         include Roar::Representer::Feature::Hypermedia
+        include Roar::Representer::JSON
 
         property :id
         property :title
@@ -27,6 +28,8 @@ module PRX
         property :created_at
         property :produced_on
         property :episode_number
+        property :episode_date
+        property :episode_identifier
         property :length
         property :language
         property :related_website

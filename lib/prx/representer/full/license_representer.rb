@@ -6,8 +6,9 @@ module PRX
   module Representer
     module Full
       module LicenseRepresenter
-        include Roar::Representer::JSON
+
         include Roar::Representer::Feature::Hypermedia
+        include Roar::Representer::JSON
 
         property :id
         property :website_usage

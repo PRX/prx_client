@@ -7,8 +7,9 @@ module PRX
   module Representer
     module Full
       module AudioVersionRepresenter
-        include Roar::Representer::JSON
+
         include Roar::Representer::Feature::Hypermedia
+        include Roar::Representer::JSON
 
         property :id
         property :label

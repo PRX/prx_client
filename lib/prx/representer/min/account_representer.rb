@@ -7,7 +7,7 @@ module PRX
     module Min
       module AccountRepresenter
         include Roar::Representer::JSON
-        include Roar::Representer::Feature::Hypermedia
+        # include Roar::Representer::Feature::Hypermedia
 
         property :id
         property :name

@@ -1,4 +1,3 @@
-require 'roar/representer'
 require 'roar/representer/json'
 require 'roar/representer/feature/hypermedia'
 
@@ -7,8 +6,8 @@ module PRX
     module Full
       module AccountRepresenter
         
-        include Roar::Representer::JSON
         include Roar::Representer::Feature::Hypermedia
+        include Roar::Representer::JSON
 
         property :id
         property :name

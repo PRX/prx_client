@@ -6,8 +6,9 @@ module PRX
   module Representer
     module Full
       module AudioFileRepresenter
-        include Roar::Representer::JSON
+
         include Roar::Representer::Feature::Hypermedia
+        include Roar::Representer::JSON
       
         property :id
         property :label
@@ -16,6 +17,7 @@ module PRX
         property :size
         property :status
         property :length
+        property :url
       
       end
     end
