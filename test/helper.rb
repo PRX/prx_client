@@ -1,6 +1,11 @@
 require 'rubygems'
+
+require 'dotenv'
+Dotenv.load
+
 require 'test/unit'
 require 'net/http'
+require 'webmock/test_unit'
 
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
@@ -10,9 +15,9 @@ require 'prx/client'
 class Test::Unit::TestCase
 end
 
-PRX::Client.key     = 'WlziaXf34NighkX24LjnE9JgpEmEQkP8nWkBmh9J'
-PRX::Client.secret  = 'iuUWEb3AfS5DQiOVpqH1juAacQ0vr3aIhNGWfIW9'
-PRX::Client.host    = "development.prx.org"
-PRX::Client.port    = 3000
-PRX::Client.version = 'v2'
-PRX::Client.token   = 'iW7qgZSQq4ryQRks1G57X7B1appJLOWeF4yZz6jn'
+PRX::Client.key     = ENV['PRX_KEY']
+PRX::Client.secret  = ENV['PRX_SECRET']
+PRX::Client.host    = ENV['PRX_HOST']    || 'www.prx.org'
+PRX::Client.port    = ENV['PRX_PORT']    || 80
+PRX::Client.version = ENV['PRX_VERSION'] || 'v2'
+PRX::Client.token   = ENV['PRX_TOKEN']

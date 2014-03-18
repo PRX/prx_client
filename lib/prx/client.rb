@@ -12,10 +12,6 @@ module PRX
       
       attr_accessor :key, :secret, :scheme, :host, :port, :version, :token
 
-      def piece_create(piece)
-        access_token.post(create_url('pieces'), :body=>{:piece=>piece.as_json})
-      end
-
       def request(opts={})
         # puts "PRX::Client::request - opts: #{opts.inspect}"
         path = opts.delete(:path) || ''
