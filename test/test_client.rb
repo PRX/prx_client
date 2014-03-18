@@ -28,7 +28,7 @@ class PRX::TestClient < Test::Unit::TestCase
 
   def test_me
     stub_request(:get, "http://development.prx.org:3001/me").
-      with(:headers => {'Authorization'=>'Bearer iW7qgZSQq4ryQRks1G57X7B1appJLOWeF4yZz6jn', 'Host'=>'development.prx.org:3001', 'User-Agent'=>'Faraday v0.8.9'}).
+      with(:headers => {'Authorization'=>'Bearer iW7qgZSQq4ryQRks1G57X7B1appJLOWeF4yZz6jn', 'Host'=>'development.prx.org:3001'}).
       to_return(:status => 200, :body => @user_info.to_json, :headers => {})
 
     response = PRX::Model::User.me

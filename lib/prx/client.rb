@@ -1,16 +1,19 @@
 require 'prx/model'
 require 'prx/representer'
 require 'faraday'
-require 'faraday_middleware'
+require 'prx/middleware/json'
+
+Faraday::Request.register_middleware(:prx_json => PRX::Middleware::Json)
 
 module PRX
   module Client
-    
+
     class << self
       
       include PRX::Model
       
       attr_accessor :key, :secret, :scheme, :host, :port, :version, :token
+
 
       def request(opts={})
         # puts "PRX::Client::request - opts: #{opts.inspect}"
@@ -38,7 +41,7 @@ module PRX
         OAuth2::Client.new(key, secret, {:site=>site})  do |b|
           b.request :multipart
           b.request :url_encoded
-          b.request :json
+          b.request :prx_json
 
           # b.response :logger
 
