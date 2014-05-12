@@ -10,7 +10,7 @@ module PRX
       include PRX::Representer::Full::PieceRepresenter
 
       attr_accessor :title, :short_description, :description, :account_id, :published_at, :created_at, :produced_on
-      attr_accessor :episode_number, :episode_identifier, :episode_date
+      attr_accessor :episode_number, :episode_identifier, :episode_date, :episode_hour
       attr_accessor :length, :language, :related_website, :credits, :broadcast_history, :intro, :outro
       attr_accessor :allow_comments, :is_shareable, :point_level, :network_only
       attr_accessor :promos, :license, :audio_versions, :producers, :creator, :account, :series, :networks

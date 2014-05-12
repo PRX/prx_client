@@ -29,6 +29,7 @@ module PRX
         property :produced_on
         property :episode_number
         property :episode_date
+        property :episode_hour
         property :episode_identifier
         property :length
         property :language
