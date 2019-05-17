@@ -8,3 +8,8 @@ require "prx/model/user"
 require "prx/model/producer"
 require "prx/model/license"
 require "prx/model/piece"
+
+module PRX
+  module Model
+  end
+end

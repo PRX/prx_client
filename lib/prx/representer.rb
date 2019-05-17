@@ -13,3 +13,7 @@ require "prx/representer/full/producer_representer"
 require "prx/representer/full/license_representer"
 require "prx/representer/full/piece_representer"
 
+module PRX
+  module Representer
+  end
+end
