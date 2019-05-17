@@ -9,9 +9,9 @@ module PRX
   module Client
 
     class << self
-      
+
       include PRX::Model
-      
+
       attr_accessor :key, :secret, :scheme, :host, :port, :version, :token
 
 
@@ -21,18 +21,18 @@ module PRX
         action = opts.delete(:action) || :get
         opts = default_options.merge(opts)
 
-        path = api_path(path) unless path.starts_with?('/')
+        path = api_path(path) unless path[0] == '/'
         response = access_token.send(action, path, opts)
         # puts response.inspect
         response
       end
 
       protected
-      
+
       def api_path(path)
         "/api/#{version}/#{path}"
       end
-      
+
       def access_token
         OAuth2::AccessToken.new(client, token, {})
       end
@@ -52,15 +52,15 @@ module PRX
       def site
         "#{scheme || 'http'}://#{host}:#{port}"
       end
-      
+
       def default_options
         {
           'Accept' => 'application/json',
           'Content-Type' => 'application/json'
         }
       end
-      
+
     end
-    
+
   end
 end
