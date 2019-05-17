@@ -1,18 +1,15 @@
-require 'roar/representer'
-require 'roar/representer/json'
-require 'roar/representer/feature/hypermedia'
+require 'roar/json'
+require 'roar/hypermedia'
 
 module PRX
   module Representer
     module Full
       module SeriesRepresenter
-        
-        include Roar::Representer::Feature::Hypermedia
-        include Roar::Representer::JSON
+        include Roar::JSON
+        include Roar::Hypermedia
 
         property :id
         property :title
-        
       end
     end
   end
