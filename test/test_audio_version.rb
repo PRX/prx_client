@@ -19,9 +19,9 @@ class PRX::TestAudioVersion < Test::Unit::TestCase
 
   def test_initialize_with_json
     json = {"label"=>"l", "audio_files"=>[{"label"=>"af"}]}.to_json
-    af = PRX::Model::AudioVersion.from_json(json)
+    af = PRX::Model::AudioVersion.new.from_json(json)
     assert af.is_a?(PRX::Model::AudioVersion)
     assert af.audio_files.first.is_a?(PRX::Model::AudioFile)
   end
-  
+
 end

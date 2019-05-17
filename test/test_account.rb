@@ -16,5 +16,5 @@ class PRX::TestAccount < Test::Unit::TestCase
     a = PRX::Model::Account.new(:name=>'n', :id=>1)
     assert_equal a.to_hash, {"name"=>"n", "id"=>1}
   end
-  
+
 end
