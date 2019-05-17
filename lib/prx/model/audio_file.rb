@@ -1,4 +1,3 @@
-require 'roar/representer/json'
 require 'prx/model/base'
 require 'prx/representer/full/audio_file_representer'
 
@@ -6,12 +5,12 @@ module PRX
   module Model
     class AudioFile < PRX::Model::Base
 
-      include Roar::Representer::JSON
+      include Roar::JSON
       include PRX::Representer::Full::AudioFileRepresenter
 
       attr_accessor :label, :content_type, :size, :status, :length, :url
       attr_reader :attach_file
-      
+
       def attach_file=(f)
         @attach_file = f
         prepare_file_upload if f

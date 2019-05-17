@@ -1,13 +1,11 @@
 require 'prx/model/base'
 require 'prx/representer/full/series_representer'
 
-require 'roar/representer/json'
-
 module PRX
   module Model
     class Series < PRX::Model::Base
 
-      include Roar::Representer::JSON
+      include Roar::JSON
       include PRX::Representer::Full::SeriesRepresenter
 
       attr_accessor :title, :subscribable
