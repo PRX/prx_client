@@ -1,7 +1,10 @@
+require 'roar/decorator'
+require 'roar/json'
+
 module PRX
   module Model
     class Base
-
+      include ActiveModel::Model
       attr_accessor :id
 
       def initialize(*args)
@@ -19,7 +22,7 @@ module PRX
         opts = {
           :action => (id ? :put : :post),
           :path   => (id ? "#{class_path_part}/#{id}" : class_path_part),
-          :body   => as_json
+          :body   => to_hash
         }
         response = request(opts)
         self.from_json(response.response.body)

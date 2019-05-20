@@ -13,13 +13,15 @@ class PRX::TestPiece < Test::Unit::TestCase
   end
 
   def test_initialize_with_account_json
-    a = PRX::Model::Piece.from_json({:title=>'t', :id=>1, :account=>{:id=>2}}.to_json)
+    a = PRX::Model::Piece.new.from_json({:title=>'t', :id=>1, :account=>{:id=>2}}.to_json)
     assert a.account.is_a?(PRX::Model::Account)
   end
 
   def test_initialize_with_account_object
-    a = PRX::Model::Piece.from_json({:title=>'t', :id=>1, :account=>PRX::Model::Account.new(:id=>2)}.to_json)
+    json = {:title=>'t', :id=>1, :account=>{id: 2}}.to_json
+    a = PRX::Model::Piece.new.from_json(json)
     assert a.account.is_a?(PRX::Model::Account)
+    assert a.account.id == 2
   end
 
   def test_piece_with_local_file
@@ -64,19 +66,18 @@ class PRX::TestPiece < Test::Unit::TestCase
       :point_level       => 0,
       :publish_on_valid  => true
     )
-    # piece.add_audio(:label=>'audio', :attach_file=>"s3://#{remix_bucket}/#{audio_s3_key}", :size=>1)
+    piece.add_audio(:label=>'audio', :attach_file=>"s3://remix/path/file.mp3", :size=>1)
     # puts "\n\npiece before saved: #{piece.to_json}"
 
-      stub_request(:post, "http://development.prx.org:3001/api/v2/pieces").
-        to_return(
-          :status => 200,
-          :body => "{\"short_description\":\"Episode 12345 of the new Public Radio Remix Select series. Based on Remix 24 episode 54321.\",\"length\":0,\"series\":{\"title\":\"Public Radio Remix Select\",\"id\":32346},\"creator\":{\"first_name\":\"PRX\",\"last_name\":\"Administrator\",\"login\":\"admin\",\"email\":\"admin@prx.org\",\"id\":8},\"publish_on_valid\":true,\"description\":\"this is the description, and it is very long\",\"license\":{\"allow_edit\":\"only with permission\",\"id\":169778,\"website_usage\":\"as a free MP3 download and stream\"},\"promos\":{\"label\":\"Promos\",\"id\":200467,\"audio_files\":[]},\"point_level\":0,\"account_id\":98822,\"title\":\"Remix Select: Episode 12345\",\"id\":88474,\"is_shareable\":true,\"allow_comments\":true,\"episode_number\":12345,\"networks\":[{\"id\":23,\"path\":\"remix-select\",\"name\":\"Public Radio Remix Select\"}],\"account\":{\"id\":98822,\"type\":\"Group\",\"path\":\"remix\",\"name\":\"Public Radio Remix\"},\"network_only\":true,\"producers\":[{\"user\":{\"first_name\":\"PRX\",\"last_name\":\"Administrator\",\"login\":\"admin\",\"email\":\"admin@prx.org\",\"id\":8},\"id\":100458}],\"audio_versions\":[{\"label\":\"Piece Audio\",\"id\":200467,\"audio_files\":[]}],\"created_at\":\"2014-03-18T10:20:11-04:00\"}",
-          :headers => {"Content-Length"=>"1118", "Set-Cookie"=>"_prx_session_development=BAh7BzoPc2Vzc2lvbl9pZCIlZDk1NGFmZWQzNDhkZDI4ZDBmMmEzN2YwMzhmZjRiODc6DHVzZXJfaWRpDQ%3D%3D--c307c1d85dacd9d35aead604008e10064684065f; path=/; HttpOnly", "ETag"=>"\"7444da1c82c7cac604f9bc2b94cd6e7b\"", "Cache-Control"=>"private, max-age=0, must-revalidate", "Content-Type"=>"application/json; charset=utf-8", "X-Runtime"=>"985", "Connection"=>"keep-alive"}
-        )
+    stub_request(:post, "http://development.prx.org:3001/api/v2/pieces").
+      to_return(
+        :status => 200,
+        :body => "{\"short_description\":\"Episode 12345 of the new Public Radio Remix Select series. Based on Remix 24 episode 54321.\",\"length\":0,\"series\":{\"title\":\"Public Radio Remix Select\",\"id\":32346},\"creator\":{\"first_name\":\"PRX\",\"last_name\":\"Administrator\",\"login\":\"admin\",\"email\":\"admin@prx.org\",\"id\":8},\"publish_on_valid\":true,\"description\":\"this is the description, and it is very long\",\"license\":{\"allow_edit\":\"only with permission\",\"id\":169778,\"website_usage\":\"as a free MP3 download and stream\"},\"promos\":{\"label\":\"Promos\",\"id\":200467,\"audio_files\":[]},\"point_level\":0,\"account_id\":98822,\"title\":\"Remix Select: Episode 12345\",\"id\":88474,\"is_shareable\":true,\"allow_comments\":true,\"episode_number\":12345,\"networks\":[{\"id\":23,\"path\":\"remix-select\",\"name\":\"Public Radio Remix Select\"}],\"account\":{\"id\":98822,\"type\":\"Group\",\"path\":\"remix\",\"name\":\"Public Radio Remix\"},\"network_only\":true,\"producers\":[{\"user\":{\"first_name\":\"PRX\",\"last_name\":\"Administrator\",\"login\":\"admin\",\"email\":\"admin@prx.org\",\"id\":8},\"id\":100458}],\"audio_versions\":[{\"label\":\"Piece Audio\",\"id\":200467,\"audio_files\":[]}],\"created_at\":\"2014-03-18T10:20:11-04:00\"}",
+        :headers => {"Content-Length"=>"1118", "Cache-Control"=>"private, max-age=0, must-revalidate", "Content-Type"=>"application/json; charset=utf-8", "X-Runtime"=>"985", "Connection"=>"keep-alive"}
+      )
 
     piece.save
     assert piece.id && (piece.id > 0)
     # puts "\n\npiece after saved:  #{piece.to_json}"
   end
-
 end

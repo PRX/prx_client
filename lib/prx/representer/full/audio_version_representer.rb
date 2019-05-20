@@ -1,15 +1,14 @@
-require 'roar/representer'
-require 'roar/representer/json'
-require 'roar/representer/feature/hypermedia'
-require "prx/representer/full/audio_file_representer"
+require 'roar/json'
+require 'roar/hypermedia'
+require 'prx/model/audio_file'
+require 'prx/representer/full/audio_file_representer'
 
 module PRX
   module Representer
     module Full
       module AudioVersionRepresenter
-
-        include Roar::Representer::Feature::Hypermedia
-        include Roar::Representer::JSON
+        include Roar::JSON
+        include Roar::Hypermedia
 
         property :id
         property :label
@@ -24,7 +23,6 @@ module PRX
         collection  :audio_files,
                     :class  => PRX::Model::AudioFile,
                     :extend => PRX::Representer::Full::AudioFileRepresenter
-
       end
     end
   end

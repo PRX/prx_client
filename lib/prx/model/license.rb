@@ -1,4 +1,3 @@
-require 'roar/representer/json'
 require 'prx/model/base'
 require 'prx/representer/full/license_representer'
 
@@ -6,7 +5,7 @@ module PRX
   module Model
     class License < PRX::Model::Base
 
-      include Roar::Representer::JSON
+      include Roar::JSON
       include PRX::Representer::Full::LicenseRepresenter
 
       attr_accessor :website_usage, :allow_edit, :additional_terms

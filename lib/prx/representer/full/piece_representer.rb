@@ -1,6 +1,13 @@
-require 'roar/representer'
-require 'roar/representer/json'
-require 'roar/representer/feature/hypermedia'
+require 'roar/json'
+require 'roar/hypermedia'
+
+require "prx/model/audio_version"
+require "prx/model/license"
+require "prx/model/producer"
+require "prx/model/user"
+require "prx/model/account"
+require "prx/model/series"
+require "prx/model/network"
 
 require "prx/representer/min/account_representer"
 require "prx/representer/min/network_representer"
@@ -15,9 +22,8 @@ module PRX
   module Representer
     module Full
       module PieceRepresenter
-
-        include Roar::Representer::Feature::Hypermedia
-        include Roar::Representer::JSON
+        include Roar::JSON
+        include Roar::Hypermedia
 
         property :id
         property :title
@@ -43,7 +49,7 @@ module PRX
         property :point_level
         property :network_only
         property :publish_on_valid
-        
+
         # child models we provide full
         property    :promos,
                     :class  => PRX::Model::AudioVersion,
@@ -77,7 +83,6 @@ module PRX
         collection  :networks,
                     :class  => PRX::Model::Network,
                     :extend => PRX::Representer::Min::NetworkRepresenter
-
       end
     end
   end

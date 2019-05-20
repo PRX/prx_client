@@ -1,4 +1,3 @@
-require 'roar/representer/json'
 require 'prx/model/base'
 require 'prx/representer/full/piece_representer'
 
@@ -6,7 +5,7 @@ module PRX
   module Model
     class Piece < PRX::Model::Base
 
-      include Roar::Representer::JSON
+      include Roar::JSON
       include PRX::Representer::Full::PieceRepresenter
 
       attr_accessor :title, :short_description, :description, :account_id, :published_at, :created_at, :produced_on

@@ -18,15 +18,15 @@ Gem::Specification.new do |s|
 
   s.add_runtime_dependency "json"
   s.add_runtime_dependency "activesupport"
+  s.add_runtime_dependency "activemodel"
   s.add_runtime_dependency "excon"
   s.add_runtime_dependency "oauth2"
   s.add_runtime_dependency 'faraday'
-  s.add_runtime_dependency "roar"
+  s.add_runtime_dependency "roar", '>= 1.0.0'
 
   # specify any dependencies here; for example:
   s.add_development_dependency "rake"
   s.add_development_dependency "test-unit"
   s.add_development_dependency 'webmock'
   s.add_development_dependency "dotenv"
-  
 end
